@@ -1,3 +1,5 @@
+source ~/Code/Bash/oh-my-git/prompt.sh
+
 alias ..="cd .."
 
 alias Code="cd ~/Code"
@@ -38,6 +40,24 @@ function Setup() {
 	ComposerInstall $1;
 	NpmInstall $1;
 }
+
+function SysInit() {
+	echo "Enabling dnsmasq..."
+	sudo dnsmasq;
+	echo "Dnsmasq done.";
+	echo "Opening resolv.conf for special editing...";
+	sudo nano /etc/resolv.conf;
+	echo "Restarting NetworkManager...";
+	sudo service NetworkManager restart;
+	echo "All done! Happy coding";
+}
+
+function ShutUp() {
+	echo "Oh sorry :-8 thought you didn't hear me...";
+	sudo service systemd-resolved restart;
+	echo "systemd-resolved shut up.";
+}
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
