@@ -46,3 +46,7 @@ godir() {
 	cd ~/go/"$@";
 	l;
 }
+
+if [ -f ~/.bash_private ]; then
+	. ~/.bash_private
+fi
